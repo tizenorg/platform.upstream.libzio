@@ -6,6 +6,7 @@ Summary:        A Library for Accessing Compressed Text Files
 Group:          System/Libraries
 Source:         %{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
+Source1001: 	libzio.manifest
 BuildRequires:  bzip2-devel
 BuildRequires:  xz
 BuildRequires:  xz-devel
@@ -26,6 +27,7 @@ and static library.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 make %{?_smp_mflags} noweak
@@ -48,11 +50,13 @@ make DESTDIR=%{buildroot} install libdir=%{_libdir} mandir=%{_mandir}
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_libdir}/libzio.so.0
 %{_libdir}/libzio.so.%{version}
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc README COPYING
 %{_libdir}/libzio.a
