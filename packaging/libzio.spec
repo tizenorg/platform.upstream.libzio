@@ -19,7 +19,7 @@ files with FILE streams.
 %package        devel
 Summary:        Libzio development files
 Group:          Development/Libraries/C and C++
-Requires:       libzio = %{version}
+Requires:       libzio = %{version}-%{release}
 
 %description    devel
 Libzio development files including zio.h, the manual page fzopen(3),
@@ -62,6 +62,4 @@ make DESTDIR=%{buildroot} install libdir=%{_libdir} mandir=%{_mandir}
 %{_libdir}/libzio.a
 %{_libdir}/libzio.so
 %{_mandir}/man3/fzopen.3*
-/usr/include/zio.h
-
-%changelog
+%{_includedir}/zio.h
