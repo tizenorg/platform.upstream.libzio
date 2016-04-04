@@ -30,6 +30,9 @@ and static library.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 make %{?_smp_mflags} noweak
 
 %check
